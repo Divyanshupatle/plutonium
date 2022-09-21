@@ -22,7 +22,7 @@ exports.authorization = async function (req, res, next) {
       return res.status(400).send({ status: false, msg: "login is requred" });
 
     let tokenVerify = jwt.verify(Token, "FunctionUP-Project1-Group30");
-    req.headers.authorId = tokenVerify.authorId;
+    req.headers.authorId = tokenVerify.userId;
 
     let checkBlogId = await blogModel.findOne({ _id: req.params.blogId });
     if (!checkBlogId) {
